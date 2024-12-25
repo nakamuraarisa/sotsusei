@@ -11,12 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('event__dates', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('event_id')->constrained();
-            $table->date('date');
-            $table->timestamps();
-        });
+        Schema::rename('event__dates', 'event_dates');
     }
 
     /**
@@ -24,6 +19,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('event__dates');
+        Schema::rename('event_dates', 'event__dates');
     }
 };
