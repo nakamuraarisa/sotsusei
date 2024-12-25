@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
+
+    // 編集可能なカラムを設定（セキュリティ）
+    protected $fillable = [
+        'title',
+        'place',
+        'start_time',
+        'end_time',
+        'reward',
+        'image_path',
+    ];
 }
