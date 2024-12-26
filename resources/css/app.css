@@ -1,3 +1,79 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
+
+/* 全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F9F6F2;
+}
+
+/* ヘッダー（黄色の部分） */
+.header {
+    background-color: #F7C948;
+    color: #1C1C1C;
+    padding: 10px 10px;
+}
+
+/* メインコンテンツ */
+main {
+    text-align: center;
+    color: #1C1C1C;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* ボタン */
+.btn-home {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #1C1C1C;
+    background-color: transparent;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-home:hover {
+    background-color: #ccc;
+    color: #fff;
+}
+
+/* フッターの固定ナビゲーションバー */
+.footer-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    /* border-top: 1px solid #ccc; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+}
+
+.footer-nav a {
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    color: #444;
+}
+
+.footer-nav a:hover {
+    color: #F7C948;
+}
+
+.footer-nav svg {
+    display: block;
+    margin: 0 auto;
+    fill: #444;
+}
+
+.footer-nav a:hover svg {
+    fill: #ffc107;
+}

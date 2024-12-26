@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*
-以下は元々入ってた、Laravel Breezeのデフォルトのコード
+//以下は元々入ってた、Laravel Breezeのデフォルトのコード
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,9 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
-*/
-
+//ここから私が作ったもの
 
 Route::get('user/login', function () {
     return view('auth.login'); //一旦Breezeのデフォルトログイン画面を仮置き
