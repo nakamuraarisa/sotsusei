@@ -61,33 +61,33 @@
         <!-- フッターの固定ナビゲーションバー -->
         <div class="footer-nav">
             <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-                </svg>
+                <div class="icon-container">
+                    <img src="{{ asset('images/home.jpeg') }}" alt="ホーム" width="24" height="24">
+                </div>
                 ホーム
             </a>
             <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                </svg>
+                <div class="icon-container">
+                    <img src="{{ asset('images/heart1.jpeg') }}" alt="お気に入り" width="24" height="24">
+                </div>
                 お気に入り
             </a>
             <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
-                    <path d="M21 8V7l-3 2-2-1-5 4-5-4-2 1-3-2v1l3 2v7h14V10l3-2z" />
-                </svg>
+                <div class="icon-container">
+                    <img src="{{ asset('images/message.jpeg') }}" alt="メッセージ" width="24" height="24">
+                </div>
                 メッセージ
             </a>
             <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-                </svg>
+                <div class="icon-container">
+                    <img src="{{ asset('images/bell.jpeg') }}" alt="お知らせ" width="24" height="24">
+                </div>
                 お知らせ
             </a>
             <a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-4 0-7.58 1.79-9.5 4.5-.18.28-.5.5-.5.5h20s-.32-.22-.5-.5C19.58 15.79 16 14 12 14z" />
-                </svg>
+                <div class="icon-container">
+                    <img src="{{ asset('images/setting.jpeg') }}" alt="設定" width="24" height="24">
+                </div>
                 設定
             </a>
         </div>
