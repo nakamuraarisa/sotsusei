@@ -18,4 +18,10 @@ class Event extends Model
         'reward',
         'image_path',
     ];
+
+    //EventDateモデルとのリレーション
+    public function event_dates()
+    {
+        return $this->hasMany(EventDate::class);
+    }
 }
