@@ -35,7 +35,7 @@
                 <ul>
                     @foreach ($events as $event)
                         <li>
-                            <img src="{{ $event->image_path }}" alt="写真" width=300>
+                            <img src="{{ asset($event->image_path) }}" alt="写真" width=300>
                             <h3>{{ $event->title }}</h3>
                             <p>場所： {{ $event->place }}</p>
                             <p>時間： {{ $event->start_time }}〜{{ $event->end_time }}</p>
