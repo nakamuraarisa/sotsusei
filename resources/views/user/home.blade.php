@@ -25,24 +25,25 @@
     </div>
 
     <!-- 検索結果表示 -->
-    <div class="results-section">
-        <h3>検索結果</h3>
+    @if(isset($hasSearched) && $hasSearched)
+        <div class="results-section">
+            <h3>検索結果</h3>
 
-        @if($events->isEmpty())
-            <p>指定された日程に開催されるイベントはありません。</p>
-        @else
-            <ul>
-                @foreach ($events as $event)
-                    <li>
-                        <img src="{{ $event->image_path }}" alt="写真" width=300>
-                        <h3>{{ $event->title }}</h3>
-                        <p>場所： {{ $event->place }}</p>
-                        <p>時間： {{ $event->start_time }}〜{{ $event->end_time }}</p>
-                        <p>報酬： {{ $event->reward }}円/日</p>
-                    </li>
-                @endforeach
-            </ul>
-        @endif
-    </div>
-
+            @if($events->isEmpty())
+                <p>指定された日程に開催されるイベントはありません。</p>
+            @else
+                <ul>
+                    @foreach ($events as $event)
+                        <li>
+                            <img src="{{ $event->image_path }}" alt="写真" width=300>
+                            <h3>{{ $event->title }}</h3>
+                            <p>場所： {{ $event->place }}</p>
+                            <p>時間： {{ $event->start_time }}〜{{ $event->end_time }}</p>
+                            <p>報酬： {{ $event->reward }}円/日</p>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+        </div>
+    @endif
 </x-app-layout>
