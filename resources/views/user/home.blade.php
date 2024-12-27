@@ -1,20 +1,15 @@
 <x-app-layout>
 
-    <!-- パンくずリスト -->
-    {{-- <div class="breadcrumb">
-        <span>ホーム > 検索</span>
-    </div> --}}
-
     <!-- 検索フォーム -->
     <div class="search-section">
-        <form action="/search" method="GET" class="search-form">
+        <form class="search-form" action="{{ route('events.search') }}" method="GET">
 
             <!-- 日付検索 -->
             <div class="form-group">
                 <label for="date" class="form-label">
                     日付
                 </label>
-                <input type="date" id="date" name="date" class="form-input">
+                <input type="date" name="date" class="form-input" value="{{ request('search') }}">
             </div>
 
             <!-- 日付未定チェック -->
@@ -27,6 +22,27 @@
             <button type="submit" class="btn-search">検索する</button>
 
         </form>
-    
     </div>
+
+    <!-- 検索結果表示 -->
+    <div class="results-section">
+        <h3>検索結果</h3>
+
+        @if($events->isEmpty())
+            <p>指定された日程に開催されるイベントはありません。</p>
+        @else
+            <ul>
+                @foreach ($events as $event)
+                    <li>
+                        <img src="{{ $event->image_path }}" alt="写真" width=300>
+                        <h3>{{ $event->title }}</h3>
+                        <p>場所： {{ $event->place }}</p>
+                        <p>時間： {{ $event->start_time }}〜{{ $event->end_time }}</p>
+                        <p>報酬： {{ $event->reward }}円/日</p>
+                    </li>
+                @endforeach
+            </ul>
+        @endif
+    </div>
+
 </x-app-layout>

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EventSearchController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +43,8 @@ Route::middleware('auth')->group(function () {
         return view('user.home'); //ログイン後のホーム画面
     })->name('home');
 });
+
+// 検索用ルート
+Route::get('/user/home', [EventSearchController::class, 'search'])->name('events.search');
 
 require __DIR__.'/auth.php';
