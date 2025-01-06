@@ -67,15 +67,29 @@ class EventSearchController extends Controller
 
     public function complete(Request $request, $id)
     {
+
+        // 入力データのバリデーション
+        $request->validate([
+            'date' => 'required|date', // dateが必須かつ日付形式であること
+        ]);
+        
+        // ユーザー情報の取得（ログインしていることを前提）
+        $userId = auth()->id();
+
         // イベント情報を取得
         $event = Event::findOrFail($id);
 
-        // 申し込み処理（例としてログに記録）
-        \Log::info("申し込み完了: イベントID: $id, 日付: {$request->input('date')}");
+        // Reservation レコードを作成
+        \App\Models\Reservation::create([
+            'user_id' => $userId,              // 現在のログインユーザーID
+            'event_date_id' => $event->id,     // イベントIDを使用
+            'status' => 1,                     // 1: 予約受付
+        ]);
 
         // 完了画面を表示
         return view('user.event_complete');
     }
+
 
 
 }
