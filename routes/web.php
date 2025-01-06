@@ -50,5 +50,10 @@ Route::get('/user/home', [EventSearchController::class, 'search'])->name('events
 // 詳細ページ
 Route::get('/event/{id}', [EventSearchController::class, 'show'])->name('event.show');
 
+// 申込内容確認
+Route::post('/event/{id}/confirm', [EventSearchController::class, 'confirm'])->name('event.confirm');
+
+// 申込完了
+Route::post('/event/{id}/complete', [EventSearchController::class, 'complete'])->name('event.complete');
 
 require __DIR__.'/auth.php';

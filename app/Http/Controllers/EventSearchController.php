@@ -48,4 +48,34 @@ class EventSearchController extends Controller
         return view('user.event_detail', compact('event'));
     }
 
+    public function confirm(Request $request, $id)
+    {
+        // 入力値のバリデーション
+        $validated = $request->validate([
+            'date' => 'required|date', // 日付が必須
+        ]);
+
+        // イベント情報を取得
+        $event = Event::findOrFail($id);
+
+        // 確認画面を表示
+        return view('user.event_confirm', [
+            'event' => $event,
+            'date' => $validated['date'],
+        ]);
+    }
+
+    public function complete(Request $request, $id)
+    {
+        // イベント情報を取得
+        $event = Event::findOrFail($id);
+
+        // 申し込み処理（例としてログに記録）
+        \Log::info("申し込み完了: イベントID: $id, 日付: {$request->input('date')}");
+
+        // 完了画面を表示
+        return view('user.event_complete');
+    }
+
+
 }
