@@ -47,4 +47,8 @@ Route::middleware('auth')->group(function () {
 // 検索用ルート
 Route::get('/user/home', [EventSearchController::class, 'search'])->name('events.search');
 
+// 詳細ページ
+Route::get('/event/{id}', [EventSearchController::class, 'show'])->name('event.show');
+
+
 require __DIR__.'/auth.php';

@@ -38,4 +38,14 @@ class EventSearchController extends Controller
             'hasSearched' => $hasSearched, // 検索状態を渡す
         ]);
     }
+
+    public function show($id)
+    {
+        // IDに基づいてイベント情報を取得
+        $event = Event::findOrFail($id);
+
+        // user/event_detail.blade.php を返す
+        return view('user.event_detail', compact('event'));
+    }
+
 }
