@@ -34,7 +34,7 @@
             @else
                 <div class="card-container">
                     @foreach ($events as $event)
-                        <a href="{{ route('event.show', ['id' => $event->id]) }}" class="card-link">
+                        <a href="{{ route('event.show', ['id' => $event->id, 'back_url' => request()->fullUrl()]) }}" class="card-link">
                             <div class="card">
                                 <div class="card-image">
                                     <img src="{{ asset($event->image_path) }}" alt="写真" width=300>
