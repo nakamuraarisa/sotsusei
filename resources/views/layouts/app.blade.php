@@ -12,6 +12,9 @@
 
         <!-- CSSファイルの読み込み -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Flatpickr CSS をCDNで読み込む -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     </head>
 
     <body>
@@ -67,5 +70,9 @@
                 設定
             </a>
         </div>
+
+        <!-- Flatpickr JS をCDNで読み込む -->
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
     </body>
 </html>

@@ -41,11 +41,16 @@ class EventSearchController extends Controller
 
     public function show($id)
     {
-        // IDに基づいてイベント情報を取得
         $event = Event::findOrFail($id);
 
-        // user/event_detail.blade.php を返す
-        return view('user.event_detail', compact('event'));
+        // 該当イベントの日程を取得
+        $availableDates = EventDate::where('event_id', $id)
+            ->whereDoesntHave('reservations', function ($query) {
+                $query->where('status', 'confirmed');
+            })
+            ->pluck('date');
+
+        return view('user.event_detail', compact('event', 'availableDates'));
     }
 
     public function confirm(Request $request, $id)
