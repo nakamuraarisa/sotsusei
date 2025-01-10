@@ -196,7 +196,7 @@ main {
 .event-details p {
     margin: 8px 0;
     font-size: 1rem;
-    color: #555;
+    color: #1c1c1c;
     text-align: left; /* 左揃え */
     line-height: 1.5; /* 行間を調整 */
 }
@@ -268,12 +268,12 @@ main {
 
 .btn-back {
     background-color: #ccc;
-    color: #333;
+    color: #1c1c1c;
 }
 
 .btn-confirm, .btn-home {
     background-color: #f8c346;
-    color: #fff;
+    color: #1c1c1c;
 }
 
 .btn-confirm:hover, .btn-home:hover {
@@ -281,9 +281,19 @@ main {
 }
 
 .event-confirm, .event-complete {
-    text-align: center;
-    margin-top: 50px;
+    max-width: 400px; /* コンテンツの最大幅を制限 */
+    margin: 0 auto; /* 中央揃え */
+    padding: 0 20px; /* 左右に余白を追加 */
 }
+
+.event-confirm p, .event-complete p {
+    margin: 8px 0;
+    font-size: 1rem;
+    color: #1c1c1c;
+    text-align: left; /* 左揃え */
+    line-height: 1.5; /* 行間を調整 */
+}
+
 
 .event-confirm h1, .event-complete h1 {
     font-size: 24px;
