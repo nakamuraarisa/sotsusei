@@ -182,27 +182,35 @@ main {
 .event-title {
     text-align: center;
     font-size: 1.8em; /* タイトルを少し大きめに */
-    color: #444;
+    color: #1C1C1C;
     margin: 20px 0 10px;
 }
 
 /* テキスト情報（時間・場所など） */
+.event-details {
+    max-width: 400px; /* コンテンツの最大幅を制限 */
+    margin: 0 auto; /* 中央揃え */
+    padding: 0 20px; /* 左右に余白を追加 */
+}
+
 .event-details p {
     margin: 8px 0;
-    font-size: 1rem; /* フォントサイズを少し大きく */
+    font-size: 1rem;
     color: #555;
-    text-align: left; /* 左揃えにする */
-    padding: 0 20px; /* 左右に余白を追加 */
+    text-align: left; /* 左揃え */
     line-height: 1.5; /* 行間を調整 */
 }
 
+
 /* カレンダーセクションのタイトル */
 .calendar-title {
-    text-align: left;
+    max-width: 400px; /* タイトル部分の幅を写真やカレンダーに揃える */
+    margin: 20px auto 10px; /* 中央揃え */
     font-size: 1.2em;
     font-weight: bold;
-    color: #666;
-    margin: 20px 20px 10px;
+    color: #1c1c1c;
+    padding: 0 20px;
+    text-align: left;
 }
 
 /* カレンダーセクション */
@@ -210,8 +218,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto; /* カレンダー全体を中央揃え */
-    padding: 0; /* 内側の余白を削除 */
+    margin: 0 auto 20px; /* カレンダー全体を中央揃え */
+    padding: 10px; /* 内側の余白を削除 */
     background-color: transparent; /* 背景を透明に */
     width: auto; /* 幅をコンテンツに合わせる */
     box-shadow: none; /* 不要な影を削除 */
@@ -222,8 +230,8 @@ main {
     display: block;
     margin: 20px auto;
     padding: 15px 30px;
-    background-color: #ff7f50; /* 可愛いコーラル色 */
-    color: #fff;
+    background-color: #F7C948;
+    color: #1C1C1C;
     font-size: 1.2rem; /* ボタンのフォントサイズを大きめに */
     border: none;
     border-radius: 25px; /* 丸みを追加して可愛く */
@@ -235,7 +243,7 @@ main {
 
 /* ボタンのホバー時 */
 .btn-apply:hover {
-    background-color: #ff6347; /* 少し濃いトーンに変更 */
+    background-color: #FFE08A;
     transform: translateY(-2px); /* 押し上げる効果 */
 }
 

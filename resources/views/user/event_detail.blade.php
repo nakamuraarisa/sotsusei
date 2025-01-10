@@ -21,7 +21,6 @@
                 <div id="calendar"></div>
             </div>
             <input type="hidden" id="selected-date" name="date" required>
-            <br>
             <div class="button-wrapper">
                 <button type="submit" class="btn-apply">申し込む</button>
             </div>
