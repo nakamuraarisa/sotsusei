@@ -12,11 +12,11 @@
                 <input type="date" name="date" class="form-input" value="{{ request('search') }}">
             </div>
 
-            <!-- 日付未定チェック -->
+            {{-- <!-- 日付未定チェック -->
             <div class="form-group">
                 <input type="checkbox" id="no-date" name="no_date" class="form-checkbox">
                 <label for="no-date" class="form-label">日付未定</label>
-            </div>
+            </div> --}}
 
             <!-- 検索ボタン -->
             <button type="submit" class="btn-search">検索する</button>
@@ -24,7 +24,7 @@
         </form>
     </div>
 
-    <!-- 検索結果表示 -->
+    {{-- <!-- 検索結果表示 -->
     @if(isset($hasSearched) && $hasSearched)
         <div class="results-section">
             <h3>検索結果</h3>
@@ -51,7 +51,7 @@
                 </div>
             @endif
         </div>
-    @endif
+    @endif --}}
 
     <!-- 現在の予約表示 -->
     @if(isset($currentReservations) && !$currentReservations->isEmpty())
@@ -59,15 +59,14 @@
             <h2>現在の予約</h2>
             @foreach ($currentReservations as $reservation)
                 <div class="reservation-card">
-                    <p>イベント名: {{ $reservation->eventDate->event->title }}</p>
-                    <p>開催場所: {{ $reservation->eventDate->event->place }}</p>
-                    <p>日時: {{ $reservation->eventDate->date }} {{ $reservation->eventDate->event->start_time }}〜{{ $reservation->eventDate->event->end_time }}</p>
-                    <p>報酬: {{ $reservation->eventDate->event->reward }}円/日</p>
+                    <p>{{ $reservation->eventDate->date }} {{ $reservation->eventDate->event->start_time }}〜{{ $reservation->eventDate->event->end_time }}</p>
+                    <p>{{ $reservation->eventDate->event->title }}</＿p>
+                    <p>場所：{{ $reservation->eventDate->event->place }}</p>
                 </div>
             @endforeach
         </div>
     @else
         <p>現在の予約はありません。</p>
     @endif
-    
+
 </x-app-layout>

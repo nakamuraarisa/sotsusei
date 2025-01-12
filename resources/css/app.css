@@ -21,24 +21,6 @@ main {
     padding: 20px;
 }
 
-/* ボタン */
-/* .btn-home {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #1C1C1C;
-    background-color: transparent;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.btn-home:hover {
-    background-color: #ccc;
-    color: #fff;
-} */
-
 /* フッターの固定ナビゲーションバー */
 .footer-nav {
     position: fixed;
@@ -69,7 +51,7 @@ main {
 /* 検索セクション */
 .search-section {
     background-color: #fff;
-    border: 1px solid #8D735B;
+    /* border: 1px solid #8D735B; */
     border-radius: 8px;
     padding: 20px;
     max-width: 400px;
@@ -111,10 +93,6 @@ main {
     color: #333;
 }
 
-.form-checkbox {
-    margin-right: 5px;
-}
-
 .btn-search {
     background-color: #F7C948;
     color: #1C1C1C;
@@ -129,6 +107,42 @@ main {
 
 .btn-search:hover {
     background-color:  #FFE08A;
+}
+
+/* 現在の予約表示 */
+.reservation-section {
+    background-color: #fff;
+    padding: 20px;
+    /* border: 1px solid #8D735B; */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+    padding-top: 20px;
+}
+
+.reservation-section h2 {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1C1C1C;
+}
+
+.reservation-card {
+    border-bottom: 1px solid #8D735B;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.reservation-card:last-child {
+    border-bottom: none; /* 最後のカードの下線を消す */
+}
+
+.reservation-card p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #1C1C1C;
 }
 
 /* 検索結果セクション */

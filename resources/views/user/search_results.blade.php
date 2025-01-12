@@ -12,11 +12,11 @@
                 <input type="date" name="date" class="form-input" value="{{ request('search') }}">
             </div>
 
-            <!-- 日付未定チェック -->
+            {{-- <!-- 日付未定チェック -->
             <div class="form-group">
                 <input type="checkbox" id="no-date" name="no_date" class="form-checkbox">
                 <label for="no-date" class="form-label">日付未定</label>
-            </div>
+            </div> --}}
 
             <!-- 検索ボタン -->
             <button type="submit" class="btn-search">検索する</button>
