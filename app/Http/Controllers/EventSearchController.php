@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\EventDate; // EventDateモデル
-use App\Models\Event;     // Eventモデル
+use App\Models\EventDate;
+use App\Models\Event;
 
 class EventSearchController extends Controller
 {
@@ -14,31 +14,40 @@ class EventSearchController extends Controller
     public function search(Request $request)
     {
         // 検索フォームからの日付データを取得
-        $date = $request->input('date');
+        $searchDate = $request->input('date');
+        $noDate = $request->input('no_date');
 
-        // 検索が実行されたかどうかを判定
-        $hasSearched = !empty($date);
-
+        // 検索条件が指定されているかどうか
+        $hasSearched = false;
         $events = collect(); // デフォルトは空のコレクション
 
-        // 検索条件が入力されている場合のみ検索を実行
-        if ($hasSearched) {
-            $eventDates = EventDate::where('date', $date)->get();
+        if ($searchDate || $noDate) {
+            $hasSearched = true;
 
-            // EventDateを元にEvent情報を取得
+            $query = EventDate::query();
+
+            if ($searchDate) {
+                $query->where('date', $searchDate);
+            }
+
+            $eventDates = $query->get();
+
+            // EventDateからイベントを取得
             $events = $eventDates->map(function ($eventDate) {
-                return $eventDate->event; // リレーションを通じてEventモデルを取得
+                return $eventDate->event;
             });
         }
 
-        // 結果をビューに渡す
-        return view('user.home', [
+        // 検索結果をビューに渡す
+        return view('user.search_results', [
             'events' => $events,
-            'date' => $date,
-            'hasSearched' => $hasSearched, // 検索状態を渡す
+            'hasSearched' => $hasSearched,
         ]);
     }
 
+    /**
+     * イベント詳細画面表示
+     */
     public function show($id)
     {
         $event = Event::findOrFail($id);
@@ -46,13 +55,16 @@ class EventSearchController extends Controller
         // 該当イベントの日程を取得
         $availableDates = EventDate::where('event_id', $id)
             ->whereDoesntHave('reservations', function ($query) {
-                $query->where('status', 'confirmed');
+                $query->where('status', 1); // 確定済みの予約を除外
             })
             ->pluck('date');
 
         return view('user.event_detail', compact('event', 'availableDates'));
     }
 
+    /**
+     * 予約確認画面
+     */
     public function confirm(Request $request, $id)
     {
         // 入力値のバリデーション
@@ -70,31 +82,32 @@ class EventSearchController extends Controller
         ]);
     }
 
+    /**
+     * 予約完了処理
+     */
     public function complete(Request $request, $id)
     {
-
         // 入力データのバリデーション
         $request->validate([
             'date' => 'required|date', // dateが必須かつ日付形式であること
         ]);
-        
+
         // ユーザー情報の取得（ログインしていることを前提）
         $userId = auth()->id();
 
         // イベント情報を取得
-        $event = Event::findOrFail($id);
+        $eventDate = EventDate::where('event_id', $id)
+            ->where('date', $request->input('date'))
+            ->firstOrFail();
 
         // Reservation レコードを作成
         \App\Models\Reservation::create([
             'user_id' => $userId,              // 現在のログインユーザーID
-            'event_date_id' => $event->id,     // イベントIDを使用
+            'event_date_id' => $eventDate->id, // イベント日付ID
             'status' => 1,                     // 1: 予約受付
         ]);
 
         // 完了画面を表示
         return view('user.event_complete');
     }
-
-
-
 }

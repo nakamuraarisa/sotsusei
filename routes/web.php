@@ -1,23 +1,21 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CurrentReservationController;
 use App\Http\Controllers\EventSearchController;
 use Illuminate\Support\Facades\Route;
-
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
+| アプリケーションのルート定義。
+| Breezeのデフォルトルートとカスタムルートを統合しています。
+|--------------------------------------------------------------------------
 */
 
-//以下は元々入ってた、Laravel Breezeのデフォルトのコード
-
+// Breezeのデフォルトルート
 Route::get('/', function () {
     return view('welcome');
 });
@@ -32,28 +30,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//ここから私が作ったもの
-
-Route::get('user/login', function () {
-    return view('auth.login'); //一旦Breezeのデフォルトログイン画面を仮置き
-})->name('login');
-
+// ユーザー関連のルート
 Route::middleware('auth')->group(function () {
-    Route::get('user/home', function () {
-        return view('user.home'); //ログイン後のホーム画面
-    })->name('home');
+    // ホーム画面（現在の予約表示を含む）
+    Route::get('/user/home', [CurrentReservationController::class, 'index'])->name('user.home');
+
+    // イベント検索
+    Route::get('/user/events/search', [EventSearchController::class, 'search'])->name('events.search');
+
+    // イベント詳細
+    Route::get('/event/{id}', [EventSearchController::class, 'show'])->name('event.show');
+
+    // 申込確認
+    Route::post('/event/{id}/confirm', [EventSearchController::class, 'confirm'])->name('event.confirm');
+
+    // 申込完了
+    Route::post('/event/{id}/complete', [EventSearchController::class, 'complete'])->name('event.complete');
 });
 
-// 検索用ルート
-Route::get('/user/home', [EventSearchController::class, 'search'])->name('events.search');
-
-// 詳細ページ
-Route::get('/event/{id}', [EventSearchController::class, 'show'])->name('event.show');
-
-// 申込内容確認
-Route::post('/event/{id}/confirm', [EventSearchController::class, 'confirm'])->name('event.confirm');
-
-// 申込完了
-Route::post('/event/{id}/complete', [EventSearchController::class, 'complete'])->name('event.complete');
-
+// Breeze認証関連
 require __DIR__.'/auth.php';

@@ -14,4 +14,10 @@ class Reservation extends Model
         'event_date_id',
         'status',
     ];
+
+    // ReservationはEventDateに属する（リレーション）
+    public function eventDate()
+    {
+        return $this->belongsTo(EventDate::class, 'event_date_id');
+    }
 }

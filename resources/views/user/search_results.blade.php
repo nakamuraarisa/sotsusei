@@ -1,5 +1,5 @@
 <x-app-layout>
-
+    
     <!-- 検索フォーム -->
     <div class="search-section">
         <form class="search-form" action="{{ route('events.search') }}" method="GET">
@@ -24,7 +24,7 @@
         </form>
     </div>
 
-    <!-- 検索結果表示 -->
+    
     @if(isset($hasSearched) && $hasSearched)
         <div class="results-section">
             <h3>検索結果</h3>
@@ -52,22 +52,4 @@
             @endif
         </div>
     @endif
-
-    <!-- 現在の予約表示 -->
-    @if(isset($currentReservations) && !$currentReservations->isEmpty())
-        <div class="reservation-section">
-            <h2>現在の予約</h2>
-            @foreach ($currentReservations as $reservation)
-                <div class="reservation-card">
-                    <p>イベント名: {{ $reservation->eventDate->event->title }}</p>
-                    <p>開催場所: {{ $reservation->eventDate->event->place }}</p>
-                    <p>日時: {{ $reservation->eventDate->date }} {{ $reservation->eventDate->event->start_time }}〜{{ $reservation->eventDate->event->end_time }}</p>
-                    <p>報酬: {{ $reservation->eventDate->event->reward }}円/日</p>
-                </div>
-            @endforeach
-        </div>
-    @else
-        <p>現在の予約はありません。</p>
-    @endif
-    
 </x-app-layout>
