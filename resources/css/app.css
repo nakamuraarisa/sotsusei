@@ -8,9 +8,14 @@ body {
 
 /* ヘッダー（黄色の部分） */
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: #F7C948;
     color: #1C1C1C;
-    padding: 10px 10px;
+    padding: 1em 0; /* 上下の内側余白を設定 */
+    z-index: 1000; /* ヘッダーが前面に表示されるようにする */
 }
 
 /* メインコンテンツ */
@@ -28,7 +33,6 @@ main {
     left: 0;
     width: 100%;
     background-color: #fff;
-    /* border-top: 1px solid #ccc; */
     display: flex;
     justify-content: space-around;
     align-items: center;
