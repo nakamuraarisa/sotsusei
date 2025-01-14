@@ -14,8 +14,15 @@ body {
     width: 100%;
     background-color: #F7C948;
     color: #1C1C1C;
-    padding: 1em 0; /* 上下の内側余白を設定 */
+    padding: 0 0; /* 上下の内側余白を設定 */
     z-index: 1000; /* ヘッダーが前面に表示されるようにする */
+}
+
+.logo {
+    height: 40px; /* ロゴの高さを設定 */
+    max-height: 100%; /* ヘッダーの高さを超えないようにする */
+    width: auto; /* アスペクト比を保持 */
+    margin: 10px 20px;
 }
 
 /* メインコンテンツ */

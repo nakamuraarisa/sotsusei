@@ -24,35 +24,6 @@
         </form>
     </div>
 
-    {{-- <!-- 検索結果表示 -->
-    @if(isset($hasSearched) && $hasSearched)
-        <div class="results-section">
-            <h3>検索結果</h3>
-
-            @if($events->isEmpty())
-                <p>指定された日程に開催されるイベントはありません。</p>
-            @else
-                <div class="card-container">
-                    @foreach ($events as $event)
-                        <a href="{{ route('event.show', ['id' => $event->id, 'back_url' => request()->fullUrl()]) }}" class="card-link">
-                            <div class="card">
-                                <div class="card-image">
-                                    <img src="{{ asset($event->image_path) }}" alt="写真" width=300>
-                                </div>
-                                <div class="card-content">
-                                    <h3 class="card-title">{{ $event->title }}</h3>
-                                    <p class="card-description">場所：{{ $event->place }}</p>
-                                    <p class="card-description">時間：{{ $event->start_time }}〜{{ $event->end_time }}</p>
-                                    <p class="card-description">報酬：{{ $event->reward }}円/日</p>
-                                </div>
-                            </div>
-                        </a>
-                    @endforeach
-                </div>
-            @endif
-        </div>
-    @endif --}}
-
     <!-- 現在の予約表示 -->
     @if(isset($currentReservations) && !$currentReservations->isEmpty())
         <div class="reservation-section">

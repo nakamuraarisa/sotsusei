@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
 
 // ユーザー関連のルート
 Route::middleware('auth')->group(function () {
-    // ホーム画面（現在の予約表示を含む）
+    // ホーム画面表示（現在の予約表示を含む）
     Route::get('/user/home', [CurrentReservationController::class, 'index'])->name('user.home');
 
     // イベント検索

@@ -20,7 +20,11 @@
     <body>
 
         <!-- ヘッダー -->
-        <div class="header">ロゴ</div>
+        <div class="header">
+            <a href="{{ route('user.home') }}">
+                <img src="{{ asset('images/logo1.png') }}" alt="サイトのロゴ" class="logo">
+            </a>
+        </div>
 
         <!-- メインコンテンツ -->
         <main>
