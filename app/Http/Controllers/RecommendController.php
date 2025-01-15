@@ -43,28 +43,48 @@ class RecommendController extends Controller
     }
 
     public function storeAnswer3(Request $request)
-    {
-        $request->validate([
-            'answer_3' => 'required',
-        ]);
+{
+    $request->validate([
+        'answer_3' => 'required',
+    ]);
 
-        session(['answer_3' => $request->input('answer_3')]);
+    session(['answer_3' => $request->input('answer_3')]);
 
-        // ここでデータベース保存処理を呼び出す
-        $data = [
-            'user_id' => auth()->id(),
-            'answer_1' => json_encode(session('answer_1')),
-            'answer_2' => session('answer_2'),
-            'answer_3' => session('answer_3'),
-        ];
+    // ここでデータを保存
+    $data = [
+        'user_id' => auth()->id(),
+        'answer_1' => json_encode(session('answer_1')),
+        'answer_2' => session('answer_2'),
+        'answer_3' => session('answer_3'),
+    ];
 
-        RecommendAnswer::create($data);
+    $recommendAnswer = RecommendAnswer::create($data);
 
-        // セッションデータをクリア
-        session()->forget(['answer_1', 'answer_2', 'answer_3']);
+    // セッションデータをクリア
+    session()->forget(['answer_1', 'answer_2', 'answer_3']);
 
-        return redirect()->route('recommend.thankyou'); // 完了ページへリダイレクト
-    }
+    // レコメンド結果を取得（仮のデータを返す処理）
+    $recommendations = $this->getRecommendations($recommendAnswer);
+
+    return view('recommend.result', compact('recommendations'));
+}
+
+/**
+ * レコメンド結果を生成するメソッド
+ *
+ * @param RecommendAnswer $recommendAnswer
+ * @return array
+ */
+private function getRecommendations(RecommendAnswer $recommendAnswer)
+{
+    // 仮のレコメンドロジック（後でAPI連携などに置き換える）
+    return [
+        '地域清掃活動',
+        '高齢者支援ボランティア',
+        '子ども教育支援活動',
+    ];
+}
+
 
     public function thankyou()
     {
