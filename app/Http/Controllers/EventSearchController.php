@@ -15,27 +15,33 @@ class EventSearchController extends Controller
     {
         // 検索フォームからの日付データを取得
         $searchDate = $request->input('date');
-        $noDate = $request->input('no_date');
 
         // 検索条件が指定されているかどうか
         $hasSearched = false;
         $events = collect(); // デフォルトは空のコレクション
 
-        if ($searchDate || $noDate) {
+        if ($searchDate) {
             $hasSearched = true;
 
-            $query = EventDate::query();
-
-            if ($searchDate) {
-                $query->where('date', $searchDate);
-            }
-
-            $eventDates = $query->get();
+            // 日付が指定されている場合、その日付に該当するイベントを取得
+            $eventDates = EventDate::where('date', $searchDate)->get();
 
             // EventDateからイベントを取得
             $events = $eventDates->map(function ($eventDate) {
                 return $eventDate->event;
             });
+        } else {
+            $hasSearched = true;
+
+            // 日付が指定されていない場合、未来の日付に関連するイベントを取得
+            $today = now()->toDateString();
+
+            $eventDates = EventDate::where('date', '>=', $today)->get();
+
+            // EventDateからイベントを取得
+            $events = $eventDates->map(function ($eventDate) {
+                return $eventDate->event;
+            })->unique(); // 同じイベントが重複しないようにする
         }
 
         // 検索結果をビューに渡す
