@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>ホーム画面</title>
+        <title>「人の役に立ちたい」という願いに寄り添う認知症ケアサービス｜VolunCare</title>
 
         <!-- Destyle.css をCDNで読み込む -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@latest/destyle.min.css">
