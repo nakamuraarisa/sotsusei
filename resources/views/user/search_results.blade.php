@@ -1,22 +1,6 @@
 <x-app-layout>
     
     <!-- 検索フォーム -->
-    {{-- <div class="search-section">
-        <form class="search-form" action="{{ route('events.search') }}" method="GET">
-
-            <!-- 日付検索 -->
-            <div class="form-group">
-                <label for="date" class="form-label">
-                    日付
-                </label>
-                <input type="date" name="date" class="form-input" value="{{ request('search') }}">
-            </div>
-
-            <!-- 検索ボタン -->
-            <button type="submit" class="btn-search">検索する</button>
-
-        </form>
-    </div> --}}
     <div class="search-section">
         <h2>日付から探す</h2>
         <form class="search-form" action="{{ route('events.search') }}" method="GET">
@@ -25,15 +9,13 @@
                 <!-- カレンダーコンテナ -->
                 <div id="calendar"></div>
             </div>
-            <input type="hidden" id="selected-date" name="date" required>
+            <input type="hidden" id="selected-date" name="date" value="{{ request('date') }}" required>
 
             <!-- 検索ボタン -->
             <button type="submit" class="btn-search">検索する</button>
-
         </form>
     </div>
 
-    
     @if(isset($hasSearched) && $hasSearched)
         <div class="results-section">
             <h3>検索結果</h3>
@@ -68,9 +50,13 @@
             const today = new Date();
             const dayAfterTomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 2);
 
+            // 検索した日付を取得
+            const selectedDate = "{{ request('date') }}";
+
             flatpickr("#calendar", {
                 inline: true,
                 minDate: dayAfterTomorrow, // 明後日以降
+                defaultDate: selectedDate || null, // 検索した日付を設定
                 dateFormat: "Y-m-d",
                 locale: "ja",
                 onChange: function(selectedDates, dateStr) {
@@ -81,3 +67,4 @@
     </script>
 
 </x-app-layout>
+
