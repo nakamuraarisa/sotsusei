@@ -3,16 +3,13 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CurrentReservationController;
 use App\Http\Controllers\EventSearchController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
 // Breezeのデフォルトルート
 Route::get('/', function () {
     return view('welcome');
 });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -21,9 +18,12 @@ Route::middleware('auth')->group(function () {
 });
 
 // ユーザー関連のルート
-Route::get('user/login', function () {
-    return view('auth.login'); //一旦Breezeのデフォルトログイン画面を仮置き
-})->name('login');
+// Route::get('user/login', function () {
+//     return view('auth.login'); //一旦Breezeのデフォルトログイン画面を仮置き
+// })->name('login');
+
+Route::get('user/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::post('user/login', [AuthenticatedSessionController::class, 'store']);
 
 Route::middleware('auth')->group(function () {
     // ホーム画面表示（現在の予約表示を含む）
@@ -41,6 +41,8 @@ Route::middleware('auth')->group(function () {
     // 申込完了
     Route::post('/event/{id}/complete', [EventSearchController::class, 'complete'])->name('event.complete');
 });
+
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 // Breeze認証関連
 require __DIR__.'/auth.php';
