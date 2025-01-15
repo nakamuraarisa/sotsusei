@@ -60,9 +60,6 @@ class EventSearchController extends Controller
 
         // 該当イベントの日程を取得
         $availableDates = EventDate::where('event_id', $id)
-            ->whereDoesntHave('reservations', function ($query) {
-                $query->where('status', 1); // 確定済みの予約を除外
-            })
             ->pluck('date');
 
         return view('user.event_detail', compact('event', 'availableDates'));
