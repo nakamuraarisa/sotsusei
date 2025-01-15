@@ -8,7 +8,6 @@
         </div>
         <p>時間: {{ $event->start_time }} 〜 {{ $event->end_time }}</p>
         <p>場所: {{ $event->place }}</p>
-        <p>アクセス: {{ $event->access }}</p>
         <p>報酬: {{ $event->reward }}円/日</p>
 
         <!-- カレンダー -->
