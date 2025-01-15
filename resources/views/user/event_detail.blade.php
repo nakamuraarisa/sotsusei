@@ -1,4 +1,5 @@
 <x-app-layout>
+    
     <div class="event-details">
         <!-- イベント情報 -->
         <a href="{{ route('events.search') }}" class="btn-back">← 一覧に戻る</a>

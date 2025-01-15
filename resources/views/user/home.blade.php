@@ -2,21 +2,14 @@
 
     <!-- 検索フォーム -->
     <div class="search-section">
+        <h2>日付から探す</h2>
         <form class="search-form" action="{{ route('events.search') }}" method="GET">
-
-            <!-- 日付検索 -->
-            <div class="form-group">
-                <label for="date" class="form-label">
-                    日付
-                </label>
-                <input type="date" name="date" class="form-input" value="{{ request('search') }}">
+            @csrf
+            <div class="calendar-wrapper">
+                <!-- カレンダーコンテナ -->
+                <div id="calendar"></div>
             </div>
-
-            {{-- <!-- 日付未定チェック -->
-            <div class="form-group">
-                <input type="checkbox" id="no-date" name="no_date" class="form-checkbox">
-                <label for="no-date" class="form-label">日付未定</label>
-            </div> --}}
+            <input type="hidden" id="selected-date" name="date" required>
 
             <!-- 検索ボタン -->
             <button type="submit" class="btn-search">検索する</button>
@@ -39,5 +32,23 @@
     @else
         <p>現在の予約はありません。</p>
     @endif
+
+    <!-- カレンダーのスクリプトを追加 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const today = new Date();
+            const dayAfterTomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 2);
+
+            flatpickr("#calendar", {
+                inline: true,
+                minDate: dayAfterTomorrow, // 明後日以降
+                dateFormat: "Y-m-d",
+                locale: "ja",
+                onChange: function(selectedDates, dateStr) {
+                    document.getElementById('selected-date').value = dateStr;
+                }
+            });
+        });
+    </script>
 
 </x-app-layout>
