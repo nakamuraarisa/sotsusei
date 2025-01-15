@@ -2,8 +2,9 @@
     
     <div class="event-details">
         <!-- イベント情報 -->
-        {{-- <a href="{{ route('events.search') }}" class="btn-back">← 一覧に戻る</a> --}}
-        <a href="{{ request()->get('back_url', route('events.search')) }}" class="btn-back">一覧に戻る</a>
+        <a href="{{ request()->get('back_url', route('events.search')) }}" class="btn-back">
+            <i class="fa-solid fa-arrow-left"></i>  検索結果に戻る
+        </a>
         <h1 class="event-title">{{ $event->title }}</h1>
         <div class="event-image">
             <img src="{{ asset($event->image_path) }}" alt="{{ $event->title }}" width=300>
