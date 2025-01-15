@@ -33,45 +33,25 @@
 
         <!-- フッターの固定ナビゲーションバー -->
         <div class="footer-nav">
-            <a href="#">
-                <div class="icon-container">
-                    <img src="{{ asset('images/home.jpeg') }}" alt="ホーム" width="24" height="24" class="icon_home"
-                    onmouseover="this.src='{{ asset('images/home_yellow.jpeg') }}';"
-                    onmouseout="this.src='{{ asset('images/home.jpeg') }}';">
-                </div>
-                ホーム
+            <a href="{{ route('user.home') }}" class="nav-link">
+                <i class="fa-solid fa-house"></i>
+                <span class="nav-text">ホーム</span>
             </a>
-            <a href="#">
-                <div class="icon-container">
-                    <img src="{{ asset('images/heart1.jpeg') }}" alt="お気に入り" width="24" height="24" class="icon_heart"
-                    onmouseover="this.src='{{ asset('images/heart1_yellow.jpeg') }}';"
-                    onmouseout="this.src='{{ asset('images/heart1.jpeg') }}';">
-                </div>
-                お気に入り
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-heart"></i>
+                <span class="nav-text">お気に入り</span>
             </a>
-            <a href="#">
-                <div class="icon-container">
-                    <img src="{{ asset('images/message.jpeg') }}" alt="メッセージ" width="24" height="24"  class="icon_message"
-                    onmouseover="this.src='{{ asset('images/message_yellow.jpeg') }}';"
-                    onmouseout="this.src='{{ asset('images/message.jpeg') }}';">
-                </div>
-                メッセージ
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-comment"></i>
+                <span class="nav-text">メッセージ</span>
             </a>
-            <a href="#">
-                <div class="icon-container">
-                    <img src="{{ asset('images/bell.jpeg') }}" alt="お知らせ" width="24" height="24" class="icon_bell"
-                    onmouseover="this.src='{{ asset('images/bell_yellow.jpeg') }}';"
-                    onmouseout="this.src='{{ asset('images/bell.jpeg') }}';">
-                </div>
-                お知らせ
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-bell"></i>
+                <span class="nav-text">お知らせ</span>
             </a>
-            <a href="#">
-                <div class="icon-container">
-                    <img src="{{ asset('images/setting.jpeg') }}" alt="設定" width="24" height="24" class="icon_setting"
-                    onmouseover="this.src='{{ asset('images/setting_yellow.jpeg') }}';"
-                    onmouseout="this.src='{{ asset('images/setting.jpeg') }}';">
-                </div>
-                設定
+            <a href="{{ route('profile.edit') }}" class="nav-link">
+                <i class="fa-solid fa-gear"></i>
+                <span class="nav-text">設定</span>
             </a>
         </div>
 
