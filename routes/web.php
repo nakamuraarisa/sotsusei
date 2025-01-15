@@ -31,6 +31,10 @@ Route::middleware('auth')->group(function () {
 });
 
 // ユーザー関連のルート
+Route::get('user/login', function () {
+    return view('auth.login'); //一旦Breezeのデフォルトログイン画面を仮置き
+})->name('login');
+
 Route::middleware('auth')->group(function () {
     // ホーム画面表示（現在の予約表示を含む）
     Route::get('/user/home', [CurrentReservationController::class, 'index'])->name('user.home');
