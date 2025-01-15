@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@latest/destyle.min.css">
 
         <!-- CSSファイルの読み込み -->
+        @vite(['resources/css/tailwind.css', 'resources/js/app.js'])
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- Flatpickr CSS をCDNで読み込む -->
