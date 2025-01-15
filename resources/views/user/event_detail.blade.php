@@ -9,7 +9,8 @@
         <div class="event-image">
             <img src="{{ asset($event->image_path) }}" alt="{{ $event->title }}" width=300>
         </div>
-        <p>時間: {{ $event->start_time }} 〜 {{ $event->end_time }}</p>
+        <p>時間: {{ \Carbon\Carbon::parse($event->start_time)->format('H:i') }} 〜 {{ \Carbon\Carbon::parse($event->end_time)->format('H:i') }}
+        </p>
         <p>場所: {{ $event->place }}</p>
         <p>報酬: {{ $event->reward }}円/日</p>
 

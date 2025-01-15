@@ -33,7 +33,7 @@
                                 <div class="card-content">
                                     <h3 class="card-title">{{ $event->title }}</h3>
                                     <p class="card-description">場所：{{ $event->place }}</p>
-                                    <p class="card-description">時間：{{ $event->start_time }}〜{{ $event->end_time }}</p>
+                                    <p class="card-description">時間：{{ \Carbon\Carbon::parse($event->start_time)->format('H:i') }} 〜 {{ \Carbon\Carbon::parse($event->end_time)->format('H:i') }}</p>
                                     <p class="card-description">報酬：{{ $event->reward }}円/日</p>
                                 </div>
                             </div>

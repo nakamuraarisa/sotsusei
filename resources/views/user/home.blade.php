@@ -23,7 +23,9 @@
             <h2>現在の予約</h2>
             @foreach ($currentReservations as $reservation)
                 <div class="reservation-card">
-                    <p>{{ $reservation->eventDate->date }} {{ $reservation->eventDate->event->start_time }}〜{{ $reservation->eventDate->event->end_time }}</p>
+                    <p>{{ \Carbon\Carbon::parse($reservation->eventDate->date)->isoFormat('YYYY年M月D日(ddd)') }} 
+                        {{ \Carbon\Carbon::parse($reservation->eventDate->event->start_time)->format('H:i') }}〜{{ \Carbon\Carbon::parse($reservation->eventDate->event->end_time)->format('H:i') }}
+                        </p>
                     <p>{{ $reservation->eventDate->event->title }}</＿p>
                     <p>場所：{{ $reservation->eventDate->event->place }}</p>
                 </div>
