@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CurrentReservationController;
 use App\Http\Controllers\EventSearchController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\RecommendController;
 use Illuminate\Support\Facades\Route;
 
 // Breezeのデフォルトルート
@@ -43,6 +44,18 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+// レコメンド機能
+Route::get('/recommend/question/1', [RecommendController::class, 'question1'])->name('recommend.question1');
+Route::post('/recommend/question/1', [RecommendController::class, 'storeAnswer1']);
+
+Route::get('/recommend/question/2', [RecommendController::class, 'question2'])->name('recommend.question2');
+Route::post('/recommend/question/2', [RecommendController::class, 'storeAnswer2']);
+
+Route::get('/recommend/question/3', [RecommendController::class, 'question3'])->name('recommend.question3');
+Route::post('/recommend/question/3', [RecommendController::class, 'storeAnswer3']);
+
+Route::get('/recommend/thankyou', [RecommendController::class, 'thankyou'])->name('recommend.thankyou');
 
 // Breeze認証関連
 require __DIR__.'/auth.php';
